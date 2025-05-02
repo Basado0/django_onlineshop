@@ -29,6 +29,7 @@ class ClothingItem(models.Model):
                                    related_name='clothing_item',blank=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,
                                  related_name='clothing_items')
+    image = models.ImageField(upload_to='products/%Y/%m/%d',blank=True)
     description = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True,null=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -51,4 +52,6 @@ class ClothingItemSize(models.Model):
 
     class Meta:
         unique_together = ('clothing_item','size')
+
+
 
