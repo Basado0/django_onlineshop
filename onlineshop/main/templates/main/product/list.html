@@ -1,6 +1,6 @@
 {% extends "main/base.html" %}
 {% load static %}
-{% block title %}Reverence{% endblock title %}
+{% block title %}Reverence Interlude - Catalog{% endblock title %}
 
 {% block content %}
     <h1 class="rev-head text-uppercase" id="reverence-title">Reverence interlude - ALL</h1>
@@ -41,7 +41,7 @@
                             {% endif %}
                             <div class="card-info">
                                 <h5>{{item.name}}</h5>
-                                <p>${{item.get_price_with_discount}}</p>
+                                <p>${{item.get_price_with_discount|floatformat:2}}</p>
                             </div>
                         </div>
                     </a>
@@ -84,8 +84,8 @@
 
             if(checkboxes.length > 0){
                 const selectedCategories = Array.from(checkboxes).map(checkbox => {
-                    const categoryText = checkbox.nextElementSibling.textContent.trim();
-                    return categoryText;
+                    const categoryText = checkbox.nextElementSibling.querySelector('.category-name');
+                    return categoryText.textContent.trim();
                 });
                 titleElement.textContent = `REVERENCE INTERLUDE - ${selectedCategories.join(', ')}`;
             }
